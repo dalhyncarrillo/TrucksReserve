@@ -1,0 +1,46 @@
+﻿@model TrucksReserve.Models.MainModel
+@{
+    ViewBag.Title = "Тракс резерв : резервни части за камиони, автобуси, бусове.  Велико Търново, ул. \"Фалшива\" 11";
+}
+@section Header
+{
+    @Html.Partial("Header")
+}
+
+<div class="clear-fix" style="margin-bottom:1px;">
+     @{
+        BusinessLayer.BObjects.BImage mainImg = Model.Gallery.FirstOrDefault(i => i.Main == true);
+        if(mainImg != null)
+        {
+            <div class="idxMainImg">
+                 <a target="_blank" href="@mainImg.FullPath" class="highslide" onclick="return hs.expand(this)">
+                    <img class="sectionBorder" src="@Url.Action("GetPhotoThumbnail", new { src = mainImg.FullPathWithTilde, width = 527, height = 10000 })"/>
+                </a> 
+            </div>
+        }
+      }
+    <section class="idxLeftSect section sectionBorder bodyTextShadow">
+        &nbsp;&nbsp;&nbsp;<h3 style="display:inline-block;">Магазин ТРАКС РЕЗЕРВ</h3> разполага с широка гама оригинални резервни части за тежкотоварни автомобили, ремаркета, бусове и автобуси от марките
+        <b>DAF</b>, <b>Mercedes</b>, <b>Volvo</b>, <b>Scania</b>, <b>Iveco</b>, <b>Renault</b>, <b>MAN</b>, <b>Kögel</b>, <b>Shmitz</b>, <b>BPW</b>, <b>ROR</b>, <b>SAF</b> и др.
+          <br /><br />
+        &nbsp;&nbsp;<img src="~/Resources/Images/Site/Bullet.png" /> Квалифицираният ни екип е готов да отговори бързо и акуратно на Вашите нужди.
+          <br /><br />
+        &nbsp;&nbsp;<img src="~/Resources/Images/Site/Bullet.png" /> Целта ни е осигурим на нашите клиенти добро обслужване и качествени стоки на ниски цени.
+          <br /><br />
+        &nbsp;&nbsp;<img src="~/Resources/Images/Site/Bullet.png" /> Стремим се постоянно да увеличаваме броя артикули в наличност и на склад. Работим с изключително голям брой утвърдени чуждестранни фирми и извършваме директен внос от тях.
+    </section>
+    <section class="idxGallerySect">
+            @foreach (BusinessLayer.BObjects.BImage img in Model.Gallery.Where(i => i.Main == false))
+            {
+                <a target="_blank" href="@img.FullPath" class="highslide" onclick="return hs.expand(this)">
+                    <img class="sectionBorder" src="@Url.Action("GetPhotoThumbnail", new { src = img.FullPathWithTilde, width = 100000, height = 110 })" />
+                </a>         
+            }
+    </section>
+</div>
+
+<script type="text/javascript">
+    LoadImageEnlarger('href');
+</script>
+
+

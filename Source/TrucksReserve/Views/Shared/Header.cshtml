@@ -1,0 +1,40 @@
+﻿@model TrucksReserve.Models.MainModel
+
+<div id="my-slideshow" class="sliderContainer sectionBorder">
+    <ul class="bjqs">
+        <li><img style="opacity:0.9;" src="~/Resources/Images/Site/slideImg1.png"/></li>
+        <li><img style="opacity:0.9;" src="~/Resources/Images/Site/slideImg2.png"/></li>
+        <li><img style="opacity:0.9;" src="~/Resources/Images/Site/slideImg3.png"/></li>
+        <li><img style="opacity:0.9;" src="~/Resources/Images/Site/slideImg4.png"/></li>
+        <li><img style="opacity:0.9;" src="~/Resources/Images/Site/slideImg5.png"/></li>
+    </ul>
+</div>
+
+ <div class="hdrIntroDiv section bodyTextShadow">
+        <h1>ТРАКС РЕЗЕРВ</h1>
+        
+        <h3>Резервните части за Вашите камиони,
+            <div style="text-align:right;">ремаркета, бусове и автобуси!</div></h3>
+        <h4>град Велико Търново, ул. "Фалшива" 11</h4>
+    </div>
+
+    <nav class="sectionBorder">
+        <ul>
+            <li><a href='javascript:LoadPartialPage("Index","Main", null);'>За нас</a></li>
+
+            <li class="hover"><a href='javascript:LoadPartialPage("Category","Main", null);'>Категории</a>
+                <ul class="showOnHover">
+                    @foreach (BusinessLayer.BObjects.BCategory category in Model.Categories)
+                    {
+                        <li>
+                            <a href='javascript:LoadPartialPage("Category","Main", @category.ID);'>@category.Name</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+            <li><a href='javascript:LoadPartialPage("Firms","Main", null);'>Фирми</a></li>
+            <li><a href='javascript:LoadPartialPage("Services","Main", null);'>Услуги</a></li>
+            <li><a href='javascript:LoadPartialPage("Promotions","Main", null);'>Промоции</a></li>
+            <li><a href='javascript:LoadPartialPage("ContactUs","Main", null);'>Контакти</a></li>
+        </ul>
+    </nav>

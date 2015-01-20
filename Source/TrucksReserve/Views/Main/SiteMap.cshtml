@@ -1,0 +1,36 @@
+﻿@model TrucksReserve.Models.MainModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Тракс резерв : резервни части за камиони, автобуси, бусове.  Велико Търново, ул. Фалшива 11</title>
+</head>
+<body>
+    <div>
+         <ul>
+            <li><a href='/Main/Index'>За нас</a></li>
+
+            <li><a href='/Main/Category'>Категории</a>
+                <ul>
+                    @foreach (BusinessLayer.BObjects.BCategory category in Model.Categories)
+                    {
+                        <li>
+                            <a href='/Main/Category/@category.ID'>@category.Name</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+            <li><a href='/Main/Firms'>Фирми</a></li>
+            <li><a href='/Main/Services'>Услуги</a></li>
+            <li><a href='/Main/Promotions'>Промоции</a></li>
+            <li><a href='/Main/ContactUs'>Контакти</a></li>
+            <li><a href='/Main/SiteMap'>Карта на сайта</a></li>
+        </ul>
+    </div>
+</body>
+</html>

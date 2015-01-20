@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/MainCss")
+    @Scripts.Render("~/Scripts/MainJs")
+</head>
+<body style="background-image: url(/Resources/Images/Site/bgr@(new Random().Next(1, 7)).jpg);">
+    
+    <div class="pageDiv">
+        <div class="headerDiv">
+              @RenderSection("Header", false)
+        </div>
+        <div id="bodyDiv">
+
+        <div id="partialPage">
+            @RenderBody()
+        </div>
+         
+             <div class="bottomDiv section bodyTextShadow sectionBorder">
+            ТРАКС РЕЗЕРВ :: Велико Търново, ул. "Фалшива" 11 :: Тел. 012/987 654 , Моб. 0789 01 02 03 :: trucks@fake.bg
+            </div>
+            <div style="margin-top:5px; margin-bottom:10px;">
+                <div class="bottomDivs otherLinks">
+                    <a class="madeByLink" href="/Main/SiteMap">sitemap</a>
+                </div>
+                <div class="bottomDivs madeBy">
+                    <a class="madeByLink" target="_blank" href="http://www.linkedin.com/in/gkolev">made by Georgi Kolev</a> 
+                </div>
+            </div>
+            <a href="/Admin/Index" style="margin-left:100px;">
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

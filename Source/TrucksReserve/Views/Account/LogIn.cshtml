@@ -1,0 +1,42 @@
+﻿@model TrucksReserve.Models.LoginModel
+
+@{
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Към главната страница", "Index", "Main")
+</p>
+
+
+@if (Request.IsAuthenticated == true)
+{
+    <p>
+        @Html.ActionLink("Към страницата за промяна", "Index", "Admin") , @Html.ActionLink("Изход", "LogOut")
+    </p>
+}
+else
+{
+    <section id="loginForm">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <fieldset style="display:inline-block; padding:10px;">
+            <legend>Вход за администратори</legend>
+            <div style="margin-bottom:2px;">
+                <div style="display:inline-block; width:150px; text-align:right">
+                    @Html.LabelFor(m => m.UserName)
+                </div>
+                @Html.TextBoxFor(m => m.UserName, new { @style = "width:150px;" })
+            </div>
+            <div style="display:inline-block; width:150px; text-align:right">
+                 @Html.LabelFor(m => m.Password)
+            </div>
+            @Html.PasswordFor(m => m.Password, new { @style = "width:150px;" })
+            <br />
+            <input type="submit" value="Вход" />
+            @Html.ValidationSummary(true)
+        </fieldset>
+    }
+    </section>
+}

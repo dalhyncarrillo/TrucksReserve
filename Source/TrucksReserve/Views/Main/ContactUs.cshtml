@@ -1,0 +1,94 @@
+﻿@model TrucksReserve.Models.MainModel
+@{
+    ViewBag.Title = "Тракс резерв : резервни части за камиони, автобуси, бусове.  Велико Търново, ул. \"Фалшива\" 11";
+}
+@section Header
+{
+    @Html.Partial("Header")
+}
+
+<div class="clear-fix" style="margin-bottom:5px;">
+
+    <div class="contLeftSect ">
+        <div class="blockWithContentAndText" style="min-height:120px;">
+            <div class="contName"><h2>За директен контакт</h2></div>
+            <img src="~/Resources/Images/Site/Bullet.png" /> Гр. Велико Търново, ул. „Фалшива” 11 (до бившия магазин на Вюрт)
+            <br />
+            <img src="~/Resources/Images/Site/Bullet.png" /> Тел. 012/987 654 , Моб. 0789 01 02 03
+            <br />
+            <img src="~/Resources/Images/Site/Bullet.png" /> e-mail: trucks@fake.bg
+        </div>
+
+        <div class="blockWithContentAndText" style="margin-top:5px; min-height:272px;">
+            <div class="contName"><h2>Или чрез следната форма</h2></div>
+            @using (Html.BeginForm("ContactUs", "Main", FormMethod.Post, new { @class = "contMailForm"}))
+            {
+                if (Request.IsAjaxRequest() == true)
+                {
+                     <script type="text/javascript">
+                         UpdateFormValidation();
+                     </script>
+                }
+               
+                
+                <table class="contMailTbl">
+                    <tr>
+                        <td class="contTextTd">
+                            <text>Вашият e-mail:</text> 
+                        </td>
+                        <td class="contTbTd">
+                             @Html.TextBoxFor(model => model.MailToSent.PersonEmail, new { @class = "contTb" })
+                        </td>
+                        <td class="contErrTd">
+                             @Html.ValidationMessageFor(model => model.MailToSent.PersonEmail, null, new { @class = "contError"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;">
+                            <text>Запитване :</text>
+                        </td>
+                        <td>
+                            @Html.TextAreaFor(model => model.MailToSent.Message, new { @class = "contTb contTextArea" })
+                        </td>
+                        <td style="vertical-align:top;">
+                             @Html.ValidationMessageFor(model => model.MailToSent.Message, null, new { @class = "contError"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input class="contSendMail" type="submit" value="Изпрати" /></td>
+                        <td></td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+    
+    <div class="contRightSect">
+        <div class="blockWithContentAndText" style="min-height:410px;">
+            <div id="mapviewer">
+                <iframe id="map" Name="mapFrame" scrolling="no" width="780" height="380" frameborder="0"
+                     src="https://www.bing.com/maps/embed/viewer.aspx?v=3&cp=43.077169~25.619604&lvl=16&w=780&h=380&sty=r&typ=d&pp=~~43.077388~25.619325&ps=&dir=0&mkt=en-us&form=BMEMJS">
+                </iframe>
+                <div id="LME_maplinks" style="line-height:20px;">
+                    <a class="contMapLink" id="LME_largerMap" href="https://www.bing.com/maps/?cp=43.077169~25.619604&sty=r&lvl=16&where1=43.077388,25.619325&mm_embed=map" target="_blank">По-голяма карта</a>
+                    &nbsp;
+                    <a class="contMapLink" id="LME_directions" href="https://www.bing.com/maps/?cp=43.077169~25.619604&sty=r&lvl=16&rtp=~pos.43.077388_25.619325__&mm_embed=dir" target="_blank">Насоки за движение</a>
+                    &nbsp;
+                    <a class="contMapLink" id="LME_birdsEye" href="https://www.bing.com/maps/?cp=r5cm7ck41fgf&sty=b&lvl=18&where1=43.077388,25.619325&mm_embed=be" target="_blank">Сателитна снимка</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@if (string.IsNullOrEmpty(Model.OperationResult) == false)
+{
+    <div id="ContOpResult">
+        <div class="section sectionBorder contOpResult" style="margin-bottom:5px;" onclick="javascript: HideElement('ContOpResult', 500);">
+             <span>@Model.OperationResult</span>
+         </div>
+    </div>
+     
+}

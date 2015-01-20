@@ -1,0 +1,28 @@
+﻿
+.hdrIntroDiv {
+    /*margin: 7px 0px 5px 0px;*/
+
+    position:absolute;
+    top:17px;
+    /*left:10px;*/
+
+    padding-left:10px;
+    margin-left:10px;
+
+    /*color: rgb(226, 216, 29);*/
+
+        -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    min-height:105px;
+}
+
+
+.sliderContainer {
+	/*margin:0 auto;*/
+	overflow:hidden;
+	/*width:960px;*/
+    margin-top:7px;
+    margin-bottom:5px;
+}

@@ -1,0 +1,210 @@
+﻿html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black; /*rgb(58, 128, 204)*/
+    font-family: Arial, 'DejaVu Sans' , 'Liberation Sans' , Freesans, sans-serif;
+    /*background: url(../Resources/1.jpg);*/
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: rgb(226, 216, 29);
+
+    -webkit-text-shadow: 2px 2px 3px black;
+    text-shadow: 2px 2px 3px black;
+}
+
+.pageDiv {
+    width: 1200px;
+    /*border: 1px solid black;*/
+    /*Центриране на див-а по средата на страницата*/
+    margin: 0px auto 0px auto;
+    padding: 0;
+    /*background-color:rgba(31, 122, 221, 0.2);*/
+}
+
+
+a{
+    text-decoration:none;
+}
+
+a.enlarge {
+    -moz-opacity: 1;
+    opacity: 1;
+}
+
+.textWarning{
+    font-size:14px;
+    color: rgb(238, 237, 237); 
+}
+
+
+
+.divToUpdate {
+    background-color: yellow;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.headerDiv {
+    margin-bottom: 5px;
+}
+
+#bodyDiv {
+    position: relative;
+}
+
+
+.section {
+    -moz-box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    
+    background-color: rgba(58,128,204,0.9);
+    padding: 5px;
+}
+
+.sectionBorder{
+     /*border: 2px solid #02101a;*/
+      border: 2px solid #0e3755;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.bottomDiv {
+    /*margin: 7px 0px 7px 0px;*/
+    background-color: rgba(58,128,204,0.9);
+}
+
+
+
+#imgPreviewWithStyles {
+
+    background:black url(../Resources/Images/Site/loader.gif) no-repeat center;
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px 10px 5px 10px; /*z-index: 999;*/
+    border: none;
+    background-position: center center;
+}
+
+.imgPreloading{
+
+    visibility:hidden;
+
+    /*width: 200px;
+    height:200px;
+    background:black url(../Resources/Images/Site/loader.gif) no-repeat center;*/
+}
+
+
+
+.loading {
+    background-color: white;
+}
+
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.blockWithContent {
+    border: 2px solid #0e3755;
+    -moz-box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: rgba(58,128,204,0.9);
+}
+
+.blockWithContentAndText {
+    border: 2px solid #0e3755;
+    -moz-box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: rgba(58,128,204,0.9);
+    padding: 5px;
+}
+
+.imgDesaturate {
+    filter: gray; 
+
+    /*Проблем при хостване на сървъри ако не са настроени да дават достъп до .svg файлове.
+      Трябва да се добавят към ISS следния MIME Type : image/svg+xml 
+      Или в web.config-a трябва да се добави настройка за това.*/
+    filter: url(Filters.svg#grayscale);
+    /*filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");*/
+
+    -webkit-filter: grayscale(1); 
+    filter: grayscale(100%);
+}
+
+
+
+.bottomDivs
+{
+    -moz-box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    
+    background-color: rgba(0, 0, 0, 0.46);
+    padding: 5px;
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    display:inline-block; 
+
+
+    font-size:14px;
+}
+
+.madeBy{
+    float:right;
+}
+
+.otherLinks{
+    float:left;
+}
+
+.madeByLink{
+    color: rgb(198, 198, 198);
+     -webkit-text-shadow: 2px 2px 3px black;
+    text-shadow: 2px 2px 3px black;
+    text-decoration:none;
+}
+
+.loadingPageDiv{
+    margin-bottom:5px;
+
+   
+    padding-top:50px;
+    padding-bottom:50px;
+
+    
+    
+    text-align:center;
+}

@@ -1,0 +1,19 @@
+﻿.idxLeftSect{
+    display: block;
+    width: 650px;
+    float: left;
+    min-height: 250px;
+}
+
+.idxMainImg {
+    display: block;
+    float: right;
+    margin:0;
+}
+
+.idxGallerySect{
+    display: block;
+    float: left; 
+    margin-top:5px;
+    margin-right:8px;
+}

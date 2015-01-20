@@ -1,0 +1,43 @@
+﻿@model TrucksReserve.Models.MainModel
+@{
+    ViewBag.Title = "Тракс резерв : резервни части за камиони, автобуси, бусове.  Велико Търново, ул. \"Фалшива\" 11";
+}
+
+@section Header
+{
+    @Html.Partial("Header")
+}
+
+<div class="clear-fix" style="text-align:center;">
+
+    @{
+        if(Model.Firms != null && Model.Firms.Count() > 0)
+        {
+            BusinessLayer.BObjects.BImage mainImg = null;
+            foreach(BusinessLayer.BObjects.BFirm firm in Model.Firms)
+            {
+                if(firm.Images != null && firm.Images.Count() > 0)
+                {
+                    mainImg = firm.Images.FirstOrDefault(i => i.Main == true);
+                    if (mainImg == null) { mainImg = firm.Images.First(); }  
+
+                    <a target="_new" href="@firm.Website">
+                        <img class="firmsImg" src="@Url.Action("GetPhotoThumbnail", new { src = mainImg.FullPathWithTilde, width = 10000, height = 70 })" />
+                    </a>
+                }
+                else
+                {
+                    <a style="display:inline-block; vertical-align:top;" target="_new" href="@firm.Website">
+                         <div class="firmsDiv">
+                            <br />
+                            <h2>@firm.Name</h2>
+                        </div>
+                    </a>
+                }
+
+                
+            }
+        }
+    }
+
+</div>

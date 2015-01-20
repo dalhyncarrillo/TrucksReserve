@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TrucksReserveModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TrucksReserveModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="TrucksReserveModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Files" EntityType="TrucksReserveModel.Store.Files" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Firms" EntityType="TrucksReserveModel.Store.Firms" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Firms_Categories" EntityType="TrucksReserveModel.Store.Firms_Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Gallery" EntityType="TrucksReserveModel.Store.Gallery" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products" EntityType="TrucksReserveModel.Store.Products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products_Categories" EntityType="TrucksReserveModel.Store.Products_Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Texts" EntityType="TrucksReserveModel.Store.Texts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="TrucksReserveModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Categories_Parent" Association="TrucksReserveModel.Store.FK_Categories_Parent">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FirmsCategories_Category" Association="TrucksReserveModel.Store.FK_FirmsCategories_Category">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Firms_Categories" EntitySet="Firms_Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FirmsCategories_Firm" Association="TrucksReserveModel.Store.FK_FirmsCategories_Firm">
+            <End Role="Firms" EntitySet="Firms" />
+            <End Role="Firms_Categories" EntitySet="Firms_Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductsCategories_Category" Association="TrucksReserveModel.Store.FK_ProductsCategories_Category">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products_Categories" EntitySet="Products_Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductsCategories_Product" Association="TrucksReserveModel.Store.FK_ProductsCategories_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Products_Categories" EntitySet="Products_Categories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentCategoryID" Type="int" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Files">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="FilePath" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Firms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Website" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Firms_Categories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FIrmID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="FilePath" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Main" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Products_Categories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Texts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_Categories_Parent">
+          <End Role="Categories" Type="TrucksReserveModel.Store.Categories" Multiplicity="0..1" />
+          <End Role="Categories1" Type="TrucksReserveModel.Store.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Categories1">
+              <PropertyRef Name="ParentCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FirmsCategories_Category">
+          <End Role="Categories" Type="TrucksReserveModel.Store.Categories" Multiplicity="1" />
+          <End Role="Firms_Categories" Type="TrucksReserveModel.Store.Firms_Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Firms_Categories">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FirmsCategories_Firm">
+          <End Role="Firms" Type="TrucksReserveModel.Store.Firms" Multiplicity="1" />
+          <End Role="Firms_Categories" Type="TrucksReserveModel.Store.Firms_Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Firms_Categories">
+              <PropertyRef Name="FIrmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductsCategories_Category">
+          <End Role="Categories" Type="TrucksReserveModel.Store.Categories" Multiplicity="1" />
+          <End Role="Products_Categories" Type="TrucksReserveModel.Store.Products_Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products_Categories">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductsCategories_Product">
+          <End Role="Products" Type="TrucksReserveModel.Store.Products" Multiplicity="1" />
+          <End Role="Products_Categories" Type="TrucksReserveModel.Store.Products_Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products_Categories">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TrucksReserveModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="TrucksReserveEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="TrucksReserveModel.Category" />
+          <EntitySet Name="Files" EntityType="TrucksReserveModel.File" />
+          <EntitySet Name="Firms" EntityType="TrucksReserveModel.Firm" />
+          <EntitySet Name="Firm_Category" EntityType="TrucksReserveModel.Firm_Category" />
+          <EntitySet Name="Gallery" EntityType="TrucksReserveModel.Gallery" />
+          <EntitySet Name="Products" EntityType="TrucksReserveModel.Product" />
+          <EntitySet Name="Product_Category" EntityType="TrucksReserveModel.Product_Category" />
+          <EntitySet Name="Texts" EntityType="TrucksReserveModel.Text" />
+          <EntitySet Name="Users" EntityType="TrucksReserveModel.User" />
+          <AssociationSet Name="FK_FirmsCategories_Category" Association="TrucksReserveModel.FK_FirmsCategories_Category">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Firms_Categories" EntitySet="Firm_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductsCategories_Category" Association="TrucksReserveModel.FK_ProductsCategories_Category">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products_Categories" EntitySet="Product_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FirmsCategories_Firm" Association="TrucksReserveModel.FK_FirmsCategories_Firm">
+            <End Role="Firms" EntitySet="Firms" />
+            <End Role="Firms_Categories" EntitySet="Firm_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductsCategories_Product" Association="TrucksReserveModel.FK_ProductsCategories_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Products_Categories" EntitySet="Product_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Parent" Association="TrucksReserveModel.FK_Categories_Parent">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Category1" EntitySet="Categories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentCategoryID" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Firms" Relationship="TrucksReserveModel.FK_FirmsCategories_Category" FromRole="Categories" ToRole="Firms_Categories" />
+          <NavigationProperty Name="Products" Relationship="TrucksReserveModel.FK_ProductsCategories_Category" FromRole="Categories" ToRole="Products_Categories" />
+          <NavigationProperty Name="ChildCategories" Relationship="TrucksReserveModel.FK_Categories_Parent" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="ParentCategory" Relationship="TrucksReserveModel.FK_Categories_Parent" FromRole="Category1" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Website" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Categories" Relationship="TrucksReserveModel.FK_FirmsCategories_Firm" FromRole="Firms" ToRole="Firms_Categories" />
+        </EntityType>
+        <EntityType Name="Firm_Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FIrmID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="TrucksReserveModel.FK_FirmsCategories_Category" FromRole="Firms_Categories" ToRole="Categories" />
+          <NavigationProperty Name="Firm" Relationship="TrucksReserveModel.FK_FirmsCategories_Firm" FromRole="Firms_Categories" ToRole="Firms" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Main" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Products_Categories" Relationship="TrucksReserveModel.FK_ProductsCategories_Product" FromRole="Products" ToRole="Products_Categories" />
+        </EntityType>
+        <EntityType Name="Product_Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="TrucksReserveModel.FK_ProductsCategories_Category" FromRole="Products_Categories" ToRole="Categories" />
+          <NavigationProperty Name="Product" Relationship="TrucksReserveModel.FK_ProductsCategories_Product" FromRole="Products_Categories" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Text">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_FirmsCategories_Category">
+          <End Role="Categories" Type="TrucksReserveModel.Category" Multiplicity="1" />
+          <End Role="Firms_Categories" Type="TrucksReserveModel.Firm_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Firms_Categories">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductsCategories_Category">
+          <End Role="Categories" Type="TrucksReserveModel.Category" Multiplicity="1" />
+          <End Role="Products_Categories" Type="TrucksReserveModel.Product_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products_Categories">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FirmsCategories_Firm">
+          <End Role="Firms" Type="TrucksReserveModel.Firm" Multiplicity="1" />
+          <End Role="Firms_Categories" Type="TrucksReserveModel.Firm_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Firms_Categories">
+              <PropertyRef Name="FIrmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductsCategories_Product">
+          <End Role="Products" Type="TrucksReserveModel.Product" Multiplicity="1" />
+          <End Role="Products_Categories" Type="TrucksReserveModel.Product_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products_Categories">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Parent">
+          <End Type="TrucksReserveModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="TrucksReserveModel.Category" Role="Category1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="ParentCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TrucksReserveModelStoreContainer" CdmEntityContainer="TrucksReserveEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="TrucksReserveModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ParentCategoryID" ColumnName="ParentCategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Files">
+            <EntityTypeMapping TypeName="TrucksReserveModel.File">
+              <MappingFragment StoreEntitySet="Files">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firms">
+            <EntityTypeMapping TypeName="TrucksReserveModel.Firm">
+              <MappingFragment StoreEntitySet="Firms">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firm_Category">
+            <EntityTypeMapping TypeName="TrucksReserveModel.Firm_Category">
+              <MappingFragment StoreEntitySet="Firms_Categories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FIrmID" ColumnName="FIrmID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gallery">
+            <EntityTypeMapping TypeName="TrucksReserveModel.Gallery">
+              <MappingFragment StoreEntitySet="Gallery">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="Main" ColumnName="Main" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="TrucksReserveModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Category">
+            <EntityTypeMapping TypeName="TrucksReserveModel.Product_Category">
+              <MappingFragment StoreEntitySet="Products_Categories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Texts">
+            <EntityTypeMapping TypeName="TrucksReserveModel.Text">
+              <MappingFragment StoreEntitySet="Texts">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TrucksReserveModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

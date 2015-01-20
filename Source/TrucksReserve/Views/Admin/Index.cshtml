@@ -1,0 +1,52 @@
+﻿@model TrucksReserve.Models.AdminModel
+
+@{
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@section Head
+{
+    <script src="~/Scripts/tiny_mce/tiny_mce.js"></script>
+    <script src="~/Scripts/tiny_mce/tiny_mce_init.js"></script>
+}
+
+@if (Request.IsAuthenticated == true)
+{
+    <p>
+        @Html.ActionLink("Към главната страница", "Index", "Main") ,  @Html.ActionLink("Изход", "LogOut") 
+    </p>
+        
+    
+    <fieldset style="display:inline-block; padding:10px;">
+        <legend>Обновяване на текстове</legend>
+
+        @using (Html.BeginForm("Index", "Admin", FormMethod.Get, new { id = "ChangeSelectedTextForm" }))
+        {
+            @Html.DropDownListFor(model => model.StrSelectedTextID, Model.TextsToEdit, "Избери текст за промяна"
+            , new {
+                onchange = "document.getElementById('ChangeSelectedTextForm').submit();"
+                , @style = "margin-bottom:5px;"
+            });
+        }
+
+        @if (Model.TextToUpdate != null)
+        {
+            using (Html.BeginForm())
+            {
+                <div style="margin-bottom:5px;">
+                    @Html.HiddenFor(model => model.TextToUpdate.ID)
+                    @Html.HiddenFor(model => model.TextToUpdate.Name)
+                    @Html.TextAreaFor(model => model.TextToUpdate.Description)
+                </div>
+               
+                <input type="submit" value="Обнови текста" />
+                @Html.ValidationSummary()
+            }
+        }
+
+    </fieldset>
+    
+}
+
+
+    

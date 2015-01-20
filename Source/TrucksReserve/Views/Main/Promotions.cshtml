@@ -1,0 +1,36 @@
+﻿@model TrucksReserve.Models.MainModel
+@{
+    ViewBag.Title = "Тракс резерв : резервни части за камиони, автобуси, бусове.  Велико Търново, ул. \"Фалшива\" 11";
+}
+@section Header
+{
+    @Html.Partial("Header")
+}
+
+<div class="clear-fix" style="margin-bottom:5px;">
+
+    <div class="promLeftSect ">
+        @if(Model.Texts != null && Model.Texts.Count() > 0)
+        {
+            foreach(BusinessLayer.BObjects.BText text in Model.Texts)
+            {
+                <div class="blockWithContentAndText">
+                    @Html.Raw(text.Description)
+                </div>
+            }
+        }
+        else
+        {
+            <div class="blockWithContentAndText">
+                &nbsp;&nbsp;&nbsp;<b>Не са въведени текущи промоции.</b>
+            </div>
+        }
+    </div>
+    
+    <div class="promRightSect">
+        <div class="blockWithContentAndText">
+           &nbsp;&nbsp;&nbsp;<b>Всеки месец нови промоции с до 30% намаление на цената.</b>
+        </div>
+    </div>
+
+</div>

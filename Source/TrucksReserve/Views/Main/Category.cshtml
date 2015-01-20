@@ -1,0 +1,105 @@
+﻿@model TrucksReserve.Models.MainModel
+@{
+    ViewBag.Title = "Тракс резерв : резервни части за камиони, автобуси, бусове.  Велико Търново, ул. \"Фалшива\" 11";
+}
+
+@section Header
+{
+    @Html.Partial("Header")
+
+   
+}
+
+
+<div class="clear-fix">
+
+    @{
+        int catWithProductsCount = Model.Categories.Count(c => c.Products.Count() > 0);
+        if (catWithProductsCount > 1)
+        {
+            @:<table class="catTblAllClass">
+            int i = 1;
+            foreach (BusinessLayer.BObjects.BCategory category in Model.Categories.Where(c => c.Products.Count() > 0).OrderByDescending(c => c.Products.Count()))
+            {
+                if (i % 3 == 1)
+                { 
+                     @:<tr>
+                }          
+                <td class="catTdAllClass blockWithContentAndText">                              
+                <div class="catNameAllLink">
+                    <a class="catLink" href='javascript:LoadPartialPage("Category","Main", @category.ID);'><h2>@category.Name</h2></a>
+                </div>
+                @foreach (BusinessLayer.BObjects.BProduct product in category.Products)
+                {
+                    @:&nbsp; <img src="/Resources/Images/Site/Bullet.png" />&nbsp; @product.Name
+                    <br />
+                }
+                </td>
+                if (i % 3 == 0)
+                { 
+                    @:</tr>
+                }
+
+                i++;
+            }
+            @:</table>
+        }
+        else if (catWithProductsCount == 1)
+        {
+            BusinessLayer.BObjects.BCategory category = Model.Categories.FirstOrDefault(c => c.Products.Count() > 0);
+            
+            <table class="catTbl">
+                <tr>
+                    @if (category.Images.Count() > 0)
+                    {
+                         <td class="catTdImages">
+                             @{
+                                 @:<div>
+                                 int i = 1;
+                                 foreach (BusinessLayer.BObjects.BImage image in category.Images)
+                                 {
+                                      <a class="enlarge" target="_blank" onmouseover="SetImageImgPos(-80, 30);" href="@image.FullPath">
+                                      <img onload="DesaturateImgForIe10Plus(this)" class="imgDesaturate sectionBorder" src="@Url.Action("GetPhotoThumbnail", new { src = image.FullPathWithTilde, width = 10000, height = 60 })" />
+                                      </a>
+                                     if (i % 4 == 0)
+                                     {
+                                        <br />
+                                     }
+                                     i++; 
+                                 }
+                                 @:</div>
+                             }
+                             <div class="blockWithContentAndText textWarning">
+                                 Изображенията са примерни!
+                             </div>
+                        </td>
+                    }
+                    <td class="catTdProducts blockWithContentAndText">
+                        <div class="catNameLink">
+                            <h2>@category.Name</h2>
+                        </div>
+                            <div class="catDivProducts">
+                                @foreach (BusinessLayer.BObjects.BProduct product in category.Products)
+                                {
+                                    @:&nbsp; <img src="/Resources/Images/Site/Bullet.png" />&nbsp; @product.Name
+                                    <br />
+                                }
+                            </div>
+                    </td>
+                </tr>
+            </table>
+            
+            
+        }
+        else
+        {
+
+        }     
+    }
+    
+
+</div>
+
+<script type="text/javascript">
+    LoadImageEnlarger('href');
+</script>
