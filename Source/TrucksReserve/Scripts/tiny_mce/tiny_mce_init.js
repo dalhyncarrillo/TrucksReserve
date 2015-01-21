@@ -4,7 +4,7 @@
     theme: "advanced",
     plugins: "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
 
-    //Премахване на paragraph <p>, в които да слага текста
+    //Doesn't add holder paragraph <p>, for the text
     forced_root_block : false,
 
     // Theme options
