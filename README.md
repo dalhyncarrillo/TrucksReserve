@@ -15,6 +15,18 @@ JS plugins: [Pixastic](https://github.com/jseidelin/pixastic), [imgPreview](http
 
 ### Poke/Edit
 
+In order to modify the code and build the application you will need Visual Studio 2010 or greater.  
+
+To run the project:  
+- Make sure you have Microsoft SQL Server 2008 or greater  
+- Create the database via script ([DB\TrucksReserve.sql](https://github.com/raste/TrucksReserve/blob/master/DB/TrucksReserve.sql)) or restore it via the backup file ([DB\TrucksReserve.bak](https://github.com/raste/TrucksReserve/blob/master/DB/TrucksReserve.bak)).  
+- Update the database connection string in [web.config](https://github.com/raste/TrucksReserve/blob/master/Source/TrucksReserve/Web.config). Locate this line
+```
+<connectionStrings>
+    <add name="TrucksReserveEntities" connectionString="metadata=res://*/DBModel.csdl|res://*/DBModel.ssdl|res://*/DBModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SOPRANO\SQLEXPRESS;initial catalog=TrucksReserve;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+```
+
 ### Images
 
 ![alt text](https://github.com/raste/TrucksReserve/blob/master/screenshots/home.png "Home")
