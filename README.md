@@ -21,13 +21,30 @@ To run the project:
 - Make sure you have Microsoft SQL Server 2008 or greater  
 - Create the database via script ([DB\TrucksReserve.sql](https://github.com/raste/TrucksReserve/blob/master/DB/TrucksReserve.sql)) or restore it via the backup file ([DB\TrucksReserve.bak](https://github.com/raste/TrucksReserve/blob/master/DB/TrucksReserve.bak)).  
 - Update the database connection string in [web.config](https://github.com/raste/TrucksReserve/blob/master/Source/TrucksReserve/Web.config).  
-  Locate this line
-  ```
+  Locate this line  
+
+  ```  
 <connectionStrings>
     <add name="TrucksReserveEntities" connectionString="metadata=res://*/DBModel.csdl|res://*/DBModel.ssdl|res://*/DBModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SOPRANO\SQLEXPRESS;initial catalog=TrucksReserve;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
   </connectionStrings>
   ```  
-  Replace `NAME` in `data source=NAME;` with the name of the SQL server. Substitude `TrucksReserve` in `initial catalog=TrucksReserve;` with the name of the created database.
+  Replace `NAME` in `data source=NAME;` with the name of the SQL server. Substitude `TrucksReserve` in `initial catalog=TrucksReserve;` with the name of the created database.  
+- To receive emails from the contacts form:  
+  Browse the [solution](https://github.com/raste/TrucksReserve/blob/master/Source/TrucksReserve.sln) with Visual Studio and open [the settings](https://github.com/raste/TrucksReserve/blob/master/Source/TrucksReserve/Properties/Settings.settings) file in TrucksReserve project. Replace `SiteContactMail` value with the email address, which should receive the emails sent from the contact form.  
+  In web.config locate this line:  
+
+  ```
+  <mailSettings>
+      <smtp deliveryMethod="Network" from="trucks@fake.bg">
+        <network host="mail.trucksfake.bg" defaultCredentials="false" userName="trucks@fake.bg" password="trucksPass" />
+      </smtp>
+  </mailSettings>
+  ```  
+  Replace `trucks@fake.bg` in both places with the email address, from which the emails will be sent. Substitute `trucksPass` in `password="trucksPass"` with the password of the chosen email address.  
+  
+  *NOTE: SMTP must be enabled for the email address, in order to send emails from it.*  
+- Build the solution. Some of the needed packages should be automatically downloaded from NUGET. If that doesn't happen, go to TOOLS > NuGet package Manager > Package Manager Settings > check Allow NuGet to download missing packages. If that doesn't help or some of the packages cannot be downloaded, get [packages.zip](https://github.com/raste/TrucksReserve/blob/master/Packages/packages.zip) and extract it in the directory of the solution (this archive of the used packages).
+- You should be able to run the project now..
 
 ### Images
 
