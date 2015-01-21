@@ -2,7 +2,16 @@
 
 ### About
 
+An web site for trucks parts dealer. This was my first MVC web site, couple months after it I was recruited for development of such sites. This site didn't manage to get published, but still it was good practice. 
+
+For browsers supporting HTML 5 History it simulates single page application > the pages are loaded via AJAX and changed via animation (no page refresh)(no library is used for this).
+
+[http://tr.wiadvice.com/](http://tr.wiadvice.com/)
+
 ### Technologies
+
+.NET 4.0, C#, MVC, LINQ, Entity Framework, AJAX, jQuery, HTML 5 History Api  
+JS plugins: [Pixastic](https://github.com/jseidelin/pixastic), [imgPreview](http://james.padolsey.com/demos/imgPreview/full/), [Basic jQuery Slider](http://www.basic-slider.com/), [TinyMCE](http://www.tinymce.com/), [Highslide](http://www.highslide.com/)
 
 ### Poke/Edit
 
