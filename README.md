@@ -4,7 +4,7 @@
 
 An web site for trucks parts dealer. This was my first MVC web site, couple months after it I was recruited for development of such sites. This site didn't manage to get published, but still it was good practice. 
 
-For browsers supporting HTML 5 History it simulates single page application > the pages are loaded via AJAX and changed via animation (no page refresh)(no library is used for this).
+For browsers supporting HTML 5 History it simulates single page application > the pages are loaded via AJAX and changed via animation (no page refresh)(no library is used for this). The interface language is Bulgarian.
 
 [http://tr.wiadvice.com/](http://tr.wiadvice.com/)
 
