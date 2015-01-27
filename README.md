@@ -40,7 +40,7 @@ To run the project:
       </smtp>
   </mailSettings>
   ```  
-  Replace `trucks@fake.bg` in both places with the email address, from which the emails will be sent. Substitute `trucksPass` in `password="trucksPass"` with the password of the chosen email address.  
+  Substitute `mail.trucksfake.bg` with the mail subdomain from which emails will be sent. Replace `trucks@fake.bg` in both places with the email address, from which the emails will be sent. Substitute `trucksPass` in `password="trucksPass"` with the password of the chosen email address.  
   
   *NOTE: SMTP must be enabled for the email address, in order to send emails from it.*  
 - Build the solution. Some of the needed packages should be automatically downloaded from NUGET. If that doesn't happen, go to `TOOLS > NuGet package Manager > Package Manager Settings > check Allow NuGet to download missing packages`. If that doesn't help or some of the packages cannot be downloaded, get [packages.zip](https://github.com/raste/TrucksReserve/blob/master/Packages/packages.zip) and extract it in the directory of the solution (this is archive of the used packages).
