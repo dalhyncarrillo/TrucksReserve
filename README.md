@@ -8,8 +8,6 @@ An web site for trucks parts dealer. This was my first MVC web site, couple mont
 
 For browsers supporting HTML 5 History it simulates single page application > the pages are loaded via AJAX and changed via animation (no page refresh)(no library is used for this). The interface language is Bulgarian.
 
-[http://tr.wiadvice.com/](http://tr.wiadvice.com/)
-
 ### Technologies
 
 .NET 4.0, C#, MVC, LINQ, Entity Framework, AJAX, jQuery, HTML 5 History Api  
